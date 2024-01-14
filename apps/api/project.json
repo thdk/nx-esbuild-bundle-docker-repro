@@ -66,6 +66,10 @@
     "docker-build": {
       "dependsOn": ["build"],
       "command": "docker build -f apps/api/Dockerfile . -t api"
+    },
+    "podman-build": {
+      "dependsOn": ["build"],
+      "command": "podman build -f apps/api/Dockerfile . -t api"
     }
   },
   "tags": []
