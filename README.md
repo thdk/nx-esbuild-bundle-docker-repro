@@ -1,5 +1,18 @@
 # Repro
 
+Snippet from generated dockerfile:
+
+```
+COPY dist/apps/api api
+RUN chown -R api:api .
+
+# You can remove this install step if you build with `--bundle` option.
+# The bundled output will include external dependencies.
+RUN npm --prefix api --omit=dev -f install # <==== This cannot be removed even with --bundle option
+
+CMD [ "node", "api" ]
+```
+
 Install step in dockerfile remains required even when app is bundled.
 
 ```sh
